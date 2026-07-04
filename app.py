@@ -6,9 +6,12 @@ from nltk.corpus import stopwords
 
 app = Flask(__name__)
 
+# loading the saved model
 pipeline = joblib.load("models/mnb_model.joblib")
 
 stop_words = set(stopwords.words('english'))
+
+# this function cleans the user input
 def clean_msg(sen):
     sen = sen.lower()
     sen = re.sub(r'[^a-z0-9]', ' ', sen)
